@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v4
+        with:
+          version: latest
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - projects/phase0-go-foundations/go-basics
+          - projects/phase0-go-foundations/go-concurrency
+          - projects/phase0-go-foundations/go-datastructures
+          - projects/phase1-mini-mysql
+          - projects/phase2-mini-redis
+          - projects/phase3-mini-mq
+          - projects/phase4-mini-rpc
+          - projects/phase5-mini-raft
+          - projects/phase6-mini-gateway
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Check if project exists
+        id: check
+        run: |
+          if [ -f "${{ matrix.project }}/go.mod" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run tests
+        if: steps.check.outputs.exists == 'true'
+        working-directory: ${{ matrix.project }}
+        run: go test -race -coverprofile=coverage.out ./...
+
+      - name: Upload coverage
+        if: steps.check.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ hashFiles(format('{0}/go.mod', matrix.project)) }}
+          path: ${{ matrix.project }}/coverage.out
