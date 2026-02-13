@@ -278,6 +278,8 @@ CRUD 工程师 ──► 组件工程师 ──► 系统工程师 ──► 分
 > 预计周期：2 个月 | 设计文档：`docs/design/stage4-mini-mysql.md`
 >
 > 这是成长为架构师的**分水岭**，进入中间件深度路线。
+>
+> 高可用 & 线上故障：`docs/design/middleware-ha-troubleshooting.md` → MySQL 篇
 
 ## 核心实现
 
@@ -323,6 +325,8 @@ CRUD 工程师 ──► 组件工程师 ──► 系统工程师 ──► 分
 # Stage 5 — 中间件深度：mini-redis
 
 > 预计周期：2 个月 | 设计文档：`docs/design/stage5-mini-redis.md`
+>
+> 高可用 & 线上故障：`docs/design/middleware-ha-troubleshooting.md` → Redis 篇
 
 ## 核心实现（版本递进）
 
@@ -366,6 +370,8 @@ CRUD 工程师 ──► 组件工程师 ──► 系统工程师 ──► 分
 # Stage 6 — 中间件深度：mini-mq
 
 > 预计周期：2 个月 | 设计文档：`docs/design/stage6-mini-mq.md`
+>
+> 高可用 & 线上故障：`docs/design/middleware-ha-troubleshooting.md` → Kafka 篇
 
 ## 核心实现
 
@@ -736,7 +742,8 @@ SWAI/
 │       ├── stage9-mini-gateway.md
 │       ├── stage10-observability.md
 │       ├── stage11-mini-ecommerce.md
-│       └── debugging-methodology.md    # 排障方法论
+│       ├── debugging-methodology.md    # 排障方法论
+│       └── middleware-ha-troubleshooting.md  # 中间件高可用 & 线上故障
 │
 ├── projects/
 │   ├── stage0-engineering-template/    # 工程脚手架

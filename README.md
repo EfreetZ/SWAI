@@ -124,6 +124,7 @@ SWAI/
 | Stage 10 | [可观测性](docs/design/stage10-observability.md) | Prometheus / Grafana / Jaeger |
 | Stage 11 | [电商平台](docs/design/stage11-mini-ecommerce.md) | 微服务 / 秒杀 / 分布式事务 |
 | 通用 | [排障方法论](docs/design/debugging-methodology.md) | 三层模型 / 工具箱 / 模板 |
+| 通用 | [中间件高可用 & 线上故障](docs/design/middleware-ha-troubleshooting.md) | MySQL/Redis/Kafka 集群部署 + 真实故障场景 |
 
 ---
 
