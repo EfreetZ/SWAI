@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  mini-redis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "16379:16379"
