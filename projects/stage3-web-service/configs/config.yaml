@@ -1,0 +1,11 @@
+app:
+  name: "stage3-web-service"
+  port: 8081
+  env: "development"
+jwt:
+  secret: "stage3-secret"
+  access_expiry_seconds: 3600
+  refresh_expiry_seconds: 86400
+log:
+  level: "info"
+  format: "text"

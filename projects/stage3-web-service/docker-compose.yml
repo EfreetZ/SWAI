@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      APP_ENV: development
+      APP_PORT: 8081
+      JWT_SECRET: stage3-secret
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: stage3
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
