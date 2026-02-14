@@ -1,0 +1,28 @@
+# 应用配置
+app:
+  name: "stage0-engineering-template"
+  port: 8080
+  env: "development"   # development / staging / production
+
+# 数据库配置
+db:
+  host: "localhost"
+  port: 3306
+  user: "root"
+  password: "root"
+  database: "app"
+  max_open_conns: 25
+  max_idle_conns: 5
+  conn_max_lifetime: 300  # 秒
+
+# Redis 配置
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+# 日志配置
+log:
+  level: "info"      # debug / info / warn / error
+  format: "text"     # json / text
